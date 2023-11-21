@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+
+<div class="container">
+        <h1 class="text-center mb-5" th:text="${title}">Create Product</h1>
+        <a th:href="@{/manage-product}" class="btn btn-primary text-center">Create Product</a>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p, sts : ${products}" th:object="${p}">
+                <th scope="row" th:text="${sts.index + 1}"></th>
+                <td th:text="*{name}">Mark</td>
+                <td th:text="*{desc}">Otto</td>
+                <td th:text="*{price}">@mdo</td>
+                <td th:text="*{stockQuantity}">@mdo</td>
+                <td>
+                    <a class="btn btn-secondary" th:href="@{/manage-product(id=*{id})}">Edit</a>
+                    <a class="btn btn-danger" th:href="@{/delete-product(id=*{id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>
